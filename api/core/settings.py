@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,15 +17,14 @@ SECRET_KEY = 'django-insecure-o8-dot()h1730dyljqohypvdg2+ysxjd9nfwo5#tz_@d45dk9t
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','5b3d-196-65-169-177.ngrok-free.app']
+ALLOWED_HOSTS = []
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
 
-# Application definition
-
+# Application definitiona
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -169,8 +169,8 @@ AUTH_USER_MODEL = 'api.UserAccount'
 #email send config 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'naitabdallah.abdallah@gmail.com'
-EMAIL_HOST_PASSWORD = 'cmdqdnvfosltpxzk'
+EMAIL_HOST_USER = os.getenv("EMAIL")
+EMAIL_HOST_PASSWORD = os.getenv("PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
